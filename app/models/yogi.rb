@@ -1,0 +1,2 @@
+class Yogi < ApplicationRecord
+end
