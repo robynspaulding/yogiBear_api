@@ -1,5 +1,6 @@
 class YogisController < ApplicationController
-  
+  before_action :authenticate_user, except: [:index, :show]
+
   def index
     yogis = Yogi.all
     render json: yogis.as_json
@@ -12,6 +13,8 @@ class YogisController < ApplicationController
 
   def create
     yogi = Yogi.new(yogi_params)
+    yogi.user_id = current_user.id
+
     yogi.save
     render json: {message: "Yogi Profile Successfully Created"}
   end

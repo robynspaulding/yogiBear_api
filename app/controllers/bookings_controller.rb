@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     bookings = Booking.all
@@ -12,7 +13,9 @@ class BookingsController < ApplicationController
 
   def create
     booking = Booking.create(booking_params)
-    # booking.save
+    booking.user_id = current_user.id
+      
+    
     if booking.save
       render json: {message: "Booking Successful"}
     else 
@@ -31,6 +34,6 @@ class BookingsController < ApplicationController
   end
   
   def  booking_params 
-    params.permit(:yogi_id, :user_id, :date, :start_time, :end_time, :total_price, :address, :city, :state, :event_type, :email, :in_person, :paid)
+    params.permit(:yogi_id, :date, :start_time, :end_time, :total_price, :address, :city, :state, :event_type, :email, :in_person, :paid)
   end
 end
