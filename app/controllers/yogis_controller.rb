@@ -19,15 +19,29 @@ class YogisController < ApplicationController
     render json: {message: "Yogi Profile Successfully Created"}
   end
 
-  # def update
-    
-  # end
+  def update
+    yogi = Yogi.find_by(id: params[:id])
+    yogi.update(
+      name: params[:name] || yogi.name,
+      rate: params[:rate] || yogi.rate,
+      yoga_type: params[:yoga_type] || yogi.yoga_type,
+      bio: params[:bio] || yogi.bio,
+      contact: params[:contact] || yogi.contact,
+      state: params[:state] || yogi.state,
+      city: params[:city] || yogi.city,
+      available_start_time: params[:available_start_time] || yogi.available_start_time,
+      available_end_time: params[:available_end_time] || yogi.available_end_time,
+      user_id: current_user.id
+    )
+    render json: {message: "Yogi Information Updated"}
+  end
 
   def destroy
     yogi = Yogi.find_by(id: params[:id])
     yogi.destroy
     render json: {message: "Yogi Profile Successfully Deleted"}
   end
+  
   def  yogi_params 
     params.permit(:name, :rate, :yoga_type, :bio, :contact, :state, :city, :available_start_time, :available_end_time)
   end

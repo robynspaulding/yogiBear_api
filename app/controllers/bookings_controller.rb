@@ -23,9 +23,24 @@ class BookingsController < ApplicationController
     end
   end
 
-  # def update
-    
-  # end
+  def update
+    booking = Booking.find_by(id: params[:id])
+    booking.update(
+      yogi_id: params[:yogi_id] || booking.yogi_id, 
+      date: params[:date] || booking.date, 
+      start_time: params[:start_time] || booking.start_time, 
+      end_time: params[:end_time] || booking.end_time, 
+      total_price: params[:total_price] || booking.total_price, 
+      address: params[:address] || booking.address, 
+      city: params[:city] || booking.city, 
+      state: params[:state] || booking.state, 
+      event_type: params[:event_type] || booking.event_type, 
+      email: params[:email] || booking.email, 
+      in_person: params[:in_person] || booking.in_person, 
+      paid: params[:paid] || booking.paid
+    )
+    render json: {message: "Booking Information Updated"}
+  end
 
   def destroy
     booking = Booking.find_by(id: params[:id])
