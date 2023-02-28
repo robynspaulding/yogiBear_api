@@ -7,4 +7,9 @@ Rails.application.routes.draw do
   post "/users" => "users#create"
 
   post "/sessions" => "sessions#create"
+
+  defaults format: :json do
+    resources :yogis
+    resources :bookings
+  end
 end

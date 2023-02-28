@@ -1,0 +1,2 @@
+class YogisController < ApplicationController
+end
