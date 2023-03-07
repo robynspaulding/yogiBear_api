@@ -31,7 +31,8 @@ class YogisController < ApplicationController
       city: params[:city] || yogi.city,
       available_start_time: params[:available_start_time] || yogi.available_start_time,
       available_end_time: params[:available_end_time] || yogi.available_end_time,
-      user_id: current_user.id
+      user_id: current_user.id,
+      image: params[:image] || yogi.image
     )
     render json: {message: "Yogi Information Updated"}
   end
@@ -43,6 +44,6 @@ class YogisController < ApplicationController
   end
   
   def  yogi_params 
-    params.permit(:name, :rate, :yoga_type, :bio, :contact, :state, :city, :available_start_time, :available_end_time)
+    params.permit(:name, :rate, :yoga_type, :bio, :contact, :state, :city, :available_start_time, :available_end_time, :image)
   end
 end
