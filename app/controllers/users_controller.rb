@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       email: params[:email],
       password: params[:password],
       password_confirmation: params[:password_confirmation],
-      is_admin: params[:is_admin]
+      is_admin: false
     )
     if user.save
       render json: { message: "User created successfully" }, status: :created
