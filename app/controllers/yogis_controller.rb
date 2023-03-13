@@ -34,7 +34,11 @@ class YogisController < ApplicationController
       user_id: current_user.id,
       image: params[:image] || yogi.image
     )
-    render json: {message: "Yogi Information Updated"}
+    if yogi.save
+      render json: {message: "Yogi Information Updated"}
+    else
+      render json: {message: "Only Admin users can edit Yogi information"}, status: :unauthorized
+    end
   end
 
   def destroy
