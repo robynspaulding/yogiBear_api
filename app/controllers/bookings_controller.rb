@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
     booking = Booking.find_by(id: params[:id])
     booking.update(
       yogi_id: params[:yogi_id] || booking.yogi_id, 
+      yogi_name: params[:yogi_name] || booking.yogi_name,
       date: params[:date] || booking.date, 
       start_time: params[:start_time] || booking.start_time, 
       end_time: params[:end_time] || booking.end_time, 
@@ -53,6 +54,6 @@ class BookingsController < ApplicationController
   end
   
   def  booking_params 
-    params.permit(:yogi_id, :date, :start_time, :end_time, :total_price, :address, :city, :state, :event_type, :email, :in_person, :paid)
+    params.permit(:yogi_id, :yogi_name, :date, :start_time, :end_time, :total_price, :address, :city, :state, :event_type, :email, :in_person, :paid)
   end
 end
