@@ -2,8 +2,12 @@ class BookingsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    bookings = Booking.all
-    render json: bookings.as_json
+    user = User.find_by(id: current_user.id)
+    if user
+      render json: user.bookings 
+    else
+      render json: {error: "bookings  not found"}
+    end
   end
 
   def show
