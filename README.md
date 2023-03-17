@@ -5,7 +5,8 @@ YogiBear is a booking sight for Yoga Instructors. A user can create an account a
 
 # Technology used:
 - Ruby version 3.1.1
-- <a href="https://github.com/robynspaulding/yogiBear_api">Ruby on Rails -Thins Repo </a>- <a href="https://github.com/robynspaulding/yogiBear_react">React.js frontend</a>
+- <a href="https://github.com/robynspaulding/yogiBear_api">Ruby on Rails - Thins Repo </a>
+- <a href="https://github.com/robynspaulding/yogiBear_react">React.js frontend</a>
 
 
 ## Installation & Dependencies
